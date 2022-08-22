@@ -1,1 +1,1 @@
-# study
+Kim donggyu - Github
