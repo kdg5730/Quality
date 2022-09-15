@@ -64,7 +64,7 @@
 								</div>
 								<div class="num">
 									<div class="updown">
-										<input type="text" name="p_num${qualityCartItems.id}" id="p_num${qualityCartItems.id}" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(${qualityCartItems.id});">
+										<input type="text" name="p_num${qualityCartItems.id}" id="p_num${qualityCartItems.id}" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(${qualityCartItems.id});"  oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
 									</div>
 								</div>
 								<div class="sum" style="font-weight:bold">${qualityCartItems.item.price}원</div>
@@ -81,15 +81,21 @@
 			
 			<div class="bigtext right-align sumcount" id="sum_p_num">상품수량: -개</div>
 			<div class="bigtext right-align box blue summoney" id="sum_p_price" style="color:#0075ff">합계금액: -원</div>
-			<p style="float:right; font-weight:bold">결제수단
-		      <select id="payment">
-		        <c:forEach var="payment" items="${payments}">
-					<c:if test="${payment.user.id == principal.user.id}">
-			             <option value="${payment.bank} ${payment.cardNum}">${payment.name}</option>
-		            </c:if>
-			    </c:forEach>
-	          </select></p>
-		
+			<p style="float:right; font-weight:bold">결제수단 :
+			<c:choose>
+				<c:when test="${payments.isEmpty()}">
+				 미등록
+				</c:when>
+					<c:otherwise>
+					<select id="payment">
+				        <c:forEach var="payment" items="${payments}">
+							<c:if test="${payment.user.id == principal.user.id}">
+					             <option value="${payment.bank} ${payment.cardNum}">${payment.name}</option>
+				            </c:if>
+					    </c:forEach>
+		         	</select>
+					</c:otherwise>
+			</c:choose></p>
 			<div id="goorder">
 				<div class="buttongroup center-align cmd" style="text-align: center">
 					<button type="button" class="btn btn-primary" id="btn-purchase">구매하기</button>

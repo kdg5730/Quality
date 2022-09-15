@@ -24,7 +24,7 @@
 	<h3 style="text-align: center">결제수단</h3><br>
 	
 	<% a = 0; %>
-	<c:forEach var="payment" items="${payments.content}">
+	<c:forEach var="payment" items="${payments}">
 		<c:if test="${payment.user.id == principal.user.id}">
 			<% a = 1;%>
 		</c:if>
@@ -40,7 +40,7 @@
 
 	<div class="container marketing">
 		<div class="row">
-		<c:forEach var="payment" items="${payments.content}">
+		<c:forEach var="payment" items="${payments}">
 			<c:if test="${payment.user.id == principal.user.id}">
 		     <div class="col-lg-4">
 		     <c:choose>
@@ -73,28 +73,7 @@
 			</c:if>
 		</c:forEach>
 	</div><br>
-		<ul class="pagination justify-content-center">
-			<c:choose>
-				<c:when test="${payments.first}">
-					<li class="page-item disabled"><a class="page-link"
-						href="?page=${payments.number-1}" style="color:#363636">Previous</a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="page-item"><a class="page-link"
-						href="?page=${payments.number-1}" style="color:#363636">Previous</a></li>
-				</c:otherwise>
-			</c:choose>
-			<c:choose>
-				<c:when test="${payments.last}">
-					<li class="page-item disabled"><a class="page-link"
-						href="?page=${payments.number+1}" style="color:#363636">Next</a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="page-item"><a class="page-link"
-						href="?page=${payments.number+1}" style="color:#363636">Next</a></li>
-				</c:otherwise>
-			</c:choose>
-		</ul>
+		
 			<div style="text-align:center"><a href="paymentSave"><button type="button" class="btn btn-secondary">결제수단 추가등록</button></a></div><br><br>
 </div>	
 	</c:otherwise>

@@ -1,5 +1,8 @@
 package com.cos.QualityProject.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -98,9 +101,15 @@ public class controller {
 	}
 	
 	@GetMapping("paymentPage")
-	public String paymentPage(Model model,@PageableDefault(size=6,sort="id"
-		,direction =Sort.Direction.ASC)Pageable pageable){
-		model.addAttribute("payments", paymentService.listUp(pageable));
+	public String paymentPage(Model model,@AuthenticationPrincipal PrincipalDetail principal){
+		List<QualityPayment> list = paymentService.listUp();
+		ArrayList<QualityPayment> payments = new ArrayList<>();
+		for(int i =0; i<list.size();i++) {
+			if(list.get(i).getUser().getId()==principal.getUser().getId()) {
+				payments.add(list.get(i));
+			}
+		}
+		model.addAttribute("payments", payments);
 		return "/userForm/paymentPage";
 	}
 	

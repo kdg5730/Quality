@@ -30,8 +30,12 @@ let index={
 			contentType:"application/json; charset=utf-8",
 			dataType:"json"
 		}).done(function(resp){
+			if(resp.data == "0"){
+				alert("아이디를 찾을수 없습니다.");
+			}else{
 				alert("아이디는 "+resp.data+" 입니다.");
 				location.href="/auth/loginForm/"+resp.stauts;//찾은아이디 달아주기
+			}
 		}).fail(function(error){
 				alert(error.data);
 		});
@@ -41,6 +45,14 @@ let index={
 	pwdSearch: function(){
 		var pwd = $("#pwd").val();
 		var pwdc = $("#pwd_check").val();
+		var username = $("#username").val();
+		var name = $("#name").val();
+		var email = $("#email").val();
+		var phone = $("#phone").val();
+		if(username != null && username != ""){
+		if(name != null && name != ""){
+		if(email != null && email != ""){
+		if(phone != null && phone != ""){
 		if(pwd != ""){
 		if(pwd == pwdc){
 		let data={
@@ -57,9 +69,13 @@ let index={
 			contentType:"application/json; charset=utf-8",
 			dataType:"json"
 		}).done(function(resp){
+				if(resp.data == "없는 아이디 입니다."){
+					alert(resp.data);
+					}else{
 				alert(resp.data);
 				if(resp.stauts != 0){
 				location.href="/auth/loginForm/"+resp.stauts;
+				}
 				}
 		}).fail(function(error){
 				alert(error.data);
@@ -68,7 +84,19 @@ let index={
 			alert("비밀번호가 다릅니다.");
 		}
 		}else {
-			alert("비밀번호를 입력해주세요");
+			alert("변경할 비밀번호를 입력해주세요");
+		}
+		}else{
+			alert("전화번호를 입력해주세요");
+		}
+		}else{
+			alert("이메일를 입력해주세요");
+		}
+		}else{
+			alert("이름를 입력해주세요");
+		}
+		}else{
+			alert("아이디를 입력해주세요");
 		}
 	},
 	

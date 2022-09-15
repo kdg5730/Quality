@@ -34,9 +34,9 @@
 				<td>${board.id}</td>
 				<td>${board.title}</td>
 					<td>
-					<c:if test="${board.kind == 0}">공지사항</c:if> 
-					<c:if test="${board.kind == 1}">이벤트</c:if>
-				</td>
+						<c:if test="${board.kind == 0}">공지사항</c:if> 
+						<c:if test="${board.kind == 1}">이벤트</c:if>
+					</td>
 				<td style="width:100px">
 					<div class="col-sm-offset-2 col-sm-10">
 					<a href="updateNoti/${board.id}"><input type="submit" class="btn btn-warning btn-sm" value="수정/삭제" style="width:100px"></a>

@@ -30,7 +30,7 @@ let index={
 			alert($("#productName").val() + "제품이 등록되었습니다.");
 			location.href="/regiProduct";
 		}).fail(function(error){
-			alert(JSON.stringify(error));
+			alert("빈칸없이 입력해주세요");
 		});
 	},
 	
@@ -50,6 +50,8 @@ let index={
 	},
 	
 	update: function(){
+		var price = $("#productPrice").val();
+		if(price!= null && price != ""){
 		var id=$("#id").val();
 		var img = $("#image1").val();
 		let data = "";
@@ -80,8 +82,11 @@ let index={
 			alert("수정이 완료되었습니다.");
 			location.href="/regiProduct";
 		}).fail(function(error){
-			alert(JSON.stringify(error));
+			alert("빈칸없이 입력해주세요");
 		});
+		}else{
+			alert("가격을 입력해주세요.");
+		}
 	}
 }
 index.init();

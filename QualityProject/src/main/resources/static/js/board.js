@@ -13,6 +13,14 @@ let index={
 	},
 	
 	save: function(){
+		var title=$("#productName").val();
+		var content=$("#content").val();
+		var kind=$("input[name='kind']:checked").val();
+		var img=$("#image").val();
+		if(title != null && title!= ""){
+		if(content != null && content!= ""){
+		if(kind != null && kind!= ""){
+		if(img != null && img!= ""){
 		let data={
 			title: $("#productName").val(), 
 			content: $("#content").val(),  
@@ -31,6 +39,18 @@ let index={
 		}).fail(function(error){
 			alert("빈칸없이 입력해주세요");
 		});
+		}else{
+			alert("이미지를 선택해 주세요.");
+		}
+		}else{
+			alert("종류를 선택해 주세요.");
+		}
+		}else{
+			alert("내용을 입력해 주세요.");
+		}
+		}else{
+			alert("제목을 입력해 주세요.");
+		}
 	},
 	
 	deleteById: function(){
@@ -49,8 +69,14 @@ let index={
 	},
 	
 	update: function(){
-		var id=$("#id").val();
-		var img = $("#image1").val()
+		var title=$("#productName").val();
+		var content=$("#content").val();
+		var kind=$("input[name='kind']:checked").val();
+		var img=$("#image").val();
+		if(title != null && title!= ""){
+		if(content != null && content!= ""){
+		if(kind != null && kind!= ""){
+		if(img != null && img!= ""){
 		let data = "";
 		if(img == null || img == ""){
 		data={
@@ -79,6 +105,18 @@ let index={
 		}).fail(function(error){
 			alert("빈칸없이 입력해주세요");
 		});
+		}else{
+			alert("이미지를 선택해 주세요.");
+		}
+		}else{
+			alert("종류를 선택해 주세요.");
+		}
+		}else{
+			alert("내용을 입력해 주세요.");
+		}
+		}else{
+			alert("제목을 입력해 주세요.");
+		}
 	}
 }
 index.init();

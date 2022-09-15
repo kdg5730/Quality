@@ -41,7 +41,7 @@
 		<label class="col-sm-2">구분</label>
 		<div class="col-sm-5">
 		<form>
-			<input type="radio" name="kind" value="0">공지사항
+			<input type="radio" name="kind" value="0" checked>공지사항
 			<input type="radio" name="kind" value="1">이벤트
 		</form>
 		</div>

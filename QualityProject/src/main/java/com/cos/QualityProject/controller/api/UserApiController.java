@@ -106,14 +106,14 @@ public class UserApiController {
 				}
 			}
 		}
-		return new ResponseDto<String>(1,"아이디를 찾을수없습니다.");
+		return new ResponseDto<String>(1,"0");
 	}
 	
 	@PostMapping("/auth/pwdSearch") //주소주소주소주소!!!!!
 	public ResponseDto<String> pwdSearch(@RequestBody QualityUsers user) {
 		QualityUsers QualityUser= userRepository.findByUsername(user.getUsername())
 				.orElseThrow(()->{
-					return new IllegalArgumentException("실패: 아이디를 찾을 수 없습니다.");
+					return new IllegalArgumentException("없는 아이디 입니다.");
 				});
 			if(QualityUser.getEmail().equals(user.getEmail())){
 				if(QualityUser.getName().equals(user.getName())){
